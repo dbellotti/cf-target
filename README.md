@@ -19,8 +19,8 @@ Usage of cf-target:
 $ go get github.com/dbellotti/cf-target
 ```
 
+### Thanks
+If you like this, it was __heavily__ influenced by Kevin Kalani's awesome [bosh-target](https://github.com/kkallday/bosh-target)
+
 ### Screenshot
 ![cf-target in action](https://raw.githubusercontent.com/dbellotti/cf-target/master/screenshot.png)
-
-### Thanks
-If you like this, it was *heavily* influenced by Kevin Kalani's awesome [bosh-target](https://github.com/kkallday/bosh-target)
