@@ -20,7 +20,7 @@ $ go get github.com/dbellotti/cf-target
 ```
 
 ### Thanks
-If you like this, it was __heavily__ influenced by Kevin Kalani's awesome [bosh-target](https://github.com/kkallday/bosh-target)
+If you like this, it was __heavily__ influenced by Kevin Kelani's awesome [bosh-target](https://github.com/kkallday/bosh-target)
 
 ### Screenshot
 ![cf-target in action](https://raw.githubusercontent.com/dbellotti/cf-target/master/screenshot.png)
