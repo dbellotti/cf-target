@@ -8,12 +8,9 @@ it to your terminal prompt.
 ```
 $ cf-target -h
 Usage of cf-target:
-  -api
-      display api target
-  -org
-    	display org
-  -space
-    	display space
+  -api=false: display target
+  -org=false: display org
+  -space=false: display space
 ```
 
 ## Installation
