@@ -1,5 +1,5 @@
 # cf-target
-This Go program will print out the currently targeted Cloudfoundry org and space.
+This Go program will print out the currently targeted Cloudfoundry api, org and space.
 
 The program was created with the intention of printing the Cloudfoundry target so that you may easily add
 it to your terminal prompt.
@@ -8,6 +8,8 @@ it to your terminal prompt.
 ```
 $ cf-target -h
 Usage of cf-target:
+  -api
+      display api target
   -org
     	display org
   -space

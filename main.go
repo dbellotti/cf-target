@@ -10,21 +10,20 @@ import (
 
 func main() {
 	var (
-		displaySpace bool
-		displayOrg   bool
+		displaySpace  bool
+		displayOrg    bool
+		displayTarget bool
 	)
 
 	flag.BoolVar(&displaySpace, "space", false, "display space")
 	flag.BoolVar(&displayOrg, "org", false, "display org")
+	flag.BoolVar(&displayTarget, "api", false, "display api target")
 	flag.Parse()
 
 	var config struct {
-		OrganizationFields struct {
-			Name string
-		}
-		SpaceFields struct {
-			Name string
-		}
+		Target             string
+		OrganizationFields struct{ Name string }
+		SpaceFields        struct{ Name string }
 	}
 
 	cfHome := os.Getenv("CF_HOME")
@@ -52,7 +51,12 @@ func main() {
 		return
 	}
 
-	if displaySpace == displayOrg {
-		fmt.Printf("%s | %s", config.OrganizationFields.Name, config.SpaceFields.Name)
+	if displayTarget {
+		println(config.Target)
+		return
+	}
+
+	if displayTarget == displaySpace && displaySpace == displayOrg {
+		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
 	}
 }
