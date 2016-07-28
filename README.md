@@ -8,7 +8,7 @@ it to your terminal prompt.
 ```
 $ cf-target -h
 Usage of cf-target:
-  -api=false: display target
+  -api=false: display api target
   -org=false: display org
   -space=false: display space
 ```
