@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func main() {
@@ -46,51 +47,30 @@ func main() {
 		return
 	}
 
+	result := []string{}
+
 	// 0 0 0
 	if !displayTarget && !displayOrg && !displaySpace {
-		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
+		result = append(result, config.Target)
+		result = append(result, config.OrganizationFields.Name)
+		result = append(result, config.SpaceFields.Name)
+
+		fmt.Printf("%s", strings.Join(result, " > "))
 		return
 	}
 
-	// 0 0 1
-	if !displayTarget && !displayOrg && displaySpace {
-		fmt.Printf("%s", config.SpaceFields.Name)
-		return
+	if displayTarget {
+		result = append(result, config.Target)
 	}
 
-	// 0 1 0
-	if !displayTarget && displayOrg && !displaySpace {
-		fmt.Printf("%s", config.OrganizationFields.Name)
-		return
+	if displayOrg {
+		result = append(result, config.OrganizationFields.Name)
 	}
 
-	// 0 1 1
-	if !displayTarget && displayOrg && displaySpace {
-		fmt.Printf("%s > %s", config.OrganizationFields.Name, config.SpaceFields.Name)
-		return
+	if displaySpace {
+		result = append(result, config.SpaceFields.Name)
 	}
 
-	// 1 0 0
-	if displayTarget && !displayOrg && !displaySpace {
-		fmt.Printf("%s", config.Target)
-		return
-	}
-
-	// 1 0 1
-	if displayTarget && !displayOrg && displaySpace {
-		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
-		return
-	}
-
-	// 1 1 0
-	if displayTarget && displayOrg && !displaySpace {
-		fmt.Printf("%s > %s", config.Target, config.OrganizationFields.Name)
-		return
-	}
-
-	// 1 1 1
-	if displayTarget && displayOrg && displaySpace {
-		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
-		return
-	}
+	fmt.Printf("%s", strings.Join(result, " > "))
+	return
 }
