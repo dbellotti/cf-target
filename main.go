@@ -41,22 +41,56 @@ func main() {
 		panic(err)
 	}
 
-	if displaySpace {
-		println(config.SpaceFields.Name)
+	// not targeted
+	if displayTarget && config.Target == "" {
 		return
 	}
 
-	if displayOrg {
-		println(config.OrganizationFields.Name)
-		return
-	}
-
-	if displayTarget {
-		println(config.Target)
-		return
-	}
-
-	if displayTarget == displaySpace && displaySpace == displayOrg {
+	// 0 0 0
+	if !displayTarget && !displayOrg && !displaySpace {
 		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
+		return
+	}
+
+	// 0 0 1
+	if !displayTarget && !displayOrg && displaySpace {
+		fmt.Printf("%s", config.SpaceFields.Name)
+		return
+	}
+
+	// 0 1 0
+	if !displayTarget && displayOrg && !displaySpace {
+		fmt.Printf("%s", config.OrganizationFields.Name)
+		return
+	}
+
+	// 0 1 1
+	if !displayTarget && displayOrg && displaySpace {
+		fmt.Printf("%s > %s", config.OrganizationFields.Name, config.SpaceFields.Name)
+		return
+	}
+
+	// 1 0 0
+	if displayTarget && !displayOrg && !displaySpace {
+		fmt.Printf("%s", config.Target)
+		return
+	}
+
+	// 1 0 1
+	if displayTarget && !displayOrg && displaySpace {
+		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
+		return
+	}
+
+	// 1 1 0
+	if displayTarget && displayOrg && !displaySpace {
+		fmt.Printf("%s > %s", config.Target, config.OrganizationFields.Name)
+		return
+	}
+
+	// 1 1 1
+	if displayTarget && displayOrg && displaySpace {
+		fmt.Printf("%s > %s > %s", config.Target, config.OrganizationFields.Name, config.SpaceFields.Name)
+		return
 	}
 }
