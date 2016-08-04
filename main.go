@@ -42,6 +42,8 @@ func main() {
 		panic(err)
 	}
 
+	config.Target = strings.TrimPrefix(config.Target, "https://")
+
 	// not targeted
 	if displayTarget && config.Target == "" {
 		return
