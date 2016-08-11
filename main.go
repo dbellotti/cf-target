@@ -53,9 +53,17 @@ func main() {
 
 	// 0 0 0
 	if !displayTarget && !displayOrg && !displaySpace {
-		result = append(result, config.Target)
-		result = append(result, config.OrganizationFields.Name)
-		result = append(result, config.SpaceFields.Name)
+		if config.Target != "" {
+			result = append(result, config.Target)
+		}
+
+		if config.OrganizationFields.Name != "" {
+			result = append(result, config.OrganizationFields.Name)
+		}
+
+		if config.SpaceFields.Name != "" {
+			result = append(result, config.SpaceFields.Name)
+		}
 
 		fmt.Printf("%s", strings.Join(result, " > "))
 		return
