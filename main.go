@@ -29,8 +29,9 @@ func main() {
 
 	cfHome := os.Getenv("CF_HOME")
 	if cfHome == "" {
-		cfHome = filepath.Join(os.Getenv("HOME"), ".cf")
+		cfHome = os.Getenv("HOME")
 	}
+	cfHome = filepath.Join(cfHome, ".cf")
 
 	f, err := os.Open(filepath.Join(cfHome, "config.json"))
 	if err != nil {
